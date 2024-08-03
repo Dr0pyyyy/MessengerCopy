@@ -1,0 +1,38 @@
+//Nav
+.nav-link {
+  font-size: 0.94rem;
+  color: black;
+  font-family: "Helvetica Medium", sans-serif;
+}
+
+.nav-link:hover {
+  text-decoration: underline 0.2rem solid #168AFF;
+  text-underline-offset: 7px;
+}
+
+
+.mb-custom{
+  margin-bottom: 2rem;
+}
+
+.login-title {
+  font-family: 'Helvetica Roman', sans-serif;
+  font-size: 4.8rem;
+}
+
+p {
+  color: #737373;
+  font-size: 1.05rem;
+  letter-spacing: 0.04rem;
+}
+
+.width-28-rem {
+  width: 28rem;
+}
+
+label {
+  color: #595d62;
+  font-family: "Helvetica Roman", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.04rem;
+}
