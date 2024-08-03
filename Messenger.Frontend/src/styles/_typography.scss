@@ -1,0 +1,34 @@
+//Fonts
+@font-face {
+  font-family: 'Helvetica Medium';
+  src: url('../../public/fonts/HelveticaNeueMedium.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Thin';
+  src: url('../../public/fonts/HelveticaNeueThin.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Light';
+  src: url('../../public/fonts/HelveticaNeueLight.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Ultra Light';
+  src: url('../../public/fonts/HelveticaNeueUltraLight.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Roman';
+  src: url('../../public/fonts/HelveticaNeueRoman.otf');
+}
+
+//Special color gradients, ...
+.gradient-text {
+  background: linear-gradient(90deg, #168AFF, #9F33FF, #FF6070);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}

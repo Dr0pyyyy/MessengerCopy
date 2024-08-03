@@ -1,9 +1,4 @@
-@import "typography";
-
-html, body {
-  height: 100%;
-  font-family: 'Helvetica Medium', sans-serif;
-}
-body {
-  margin: 0;
-}
+@import "styles/typography";
+@import "styles/base";
+@import "styles/inputs";
+@import "styles/buttons";
