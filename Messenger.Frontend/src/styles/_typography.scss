@@ -24,6 +24,21 @@
   src: url('../../public/fonts/HelveticaNeueRoman.otf');
 }
 
+@font-face {
+  font-family: 'Helvetica Black';
+  src: url('../../public/fonts/HelveticaNeueBlack.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Bold';
+  src: url('../../public/fonts/HelveticaNeueBold.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Heavy';
+  src: url('../../public/fonts/HelveticaNeueHeavy.otf');
+}
+
 //Special color gradients, ...
 .gradient-text {
   background: linear-gradient(90deg, #168AFF, #9F33FF, #FF6070);

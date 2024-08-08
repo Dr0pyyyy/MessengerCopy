@@ -1,0 +1,26 @@
+.nav-link {
+  font-size: 0.94rem;
+  color: black;
+  font-family: "Helvetica Medium", sans-serif;
+}
+
+.nav-link:hover {
+  text-decoration: underline 0.2rem solid #168AFF;
+  text-underline-offset: 7px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030;
+}
+
+body {
+  padding-top: 60px;
+}
+
+.custom-padding{
+  padding: 0 16.6rem;
+}
