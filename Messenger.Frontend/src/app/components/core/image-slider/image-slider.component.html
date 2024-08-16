@@ -1,0 +1,50 @@
+<ng-container *ngIf="sliderData.length > 0">
+  <div class="d-flex flex-row align-items-center justify-content-center">
+
+    <div class="d-flex flex-column align-items-start justify-content-center">
+      <ng-container *ngFor="let item of sliderData">
+
+        <ng-container *ngIf="item.iconData">
+          <a class="d-flex justify-content-start align-items-center pt-3 pb-3 icon-tab" (click)="setActiveSlide(item.id)"
+             [ngClass]="item.id === currentActiveSlideId ? 'icon-tab-active' : 'icon-tab-inactive'">
+            <img class="icon" [ngClass]="item.id === currentActiveSlideId ? 'icon-active' : 'icon-inactive'"
+                 [ngSrc]="item.iconData.iconPath" alt="" width="35" height="35">
+            <div class="ms-3 icon-description letter-spacing-1">{{ item.iconData.iconDescription }}</div>
+          </a>
+        </ng-container>
+
+      </ng-container>
+    </div>
+
+    <ng-container *ngIf="sliderData[currentActiveSlideId].imagePath">
+      <img class="ms-5 me-5" ngSrc="{{sliderData[currentActiveSlideId].imagePath}}" alt="Image" height="620" width="380">
+    </ng-container>
+
+    <div class="d-flex flex-column slider-content-width">
+      <ng-container *ngIf="sliderData[currentActiveSlideId].content">
+
+        <ng-container *ngIf="sliderData[currentActiveSlideId].content.header">
+          <p>{{ sliderData[currentActiveSlideId].content.header }}</p>
+        </ng-container>
+
+        <ng-container *ngIf="sliderData[currentActiveSlideId].content.title">
+          <h1 class="title">{{ sliderData[currentActiveSlideId].content.title }}</h1>
+        </ng-container>
+
+        <ng-container *ngIf="sliderData[currentActiveSlideId].content.content">
+          <p>{{ sliderData[currentActiveSlideId].content.content }}</p>
+        </ng-container>
+
+        <ng-container *ngIf="sliderData[currentActiveSlideId].content.footer">
+          <p>{{ sliderData[currentActiveSlideId].content.footer }}</p>
+        </ng-container>
+
+        <!--    <ng-container *ngIf="sliderData[currentActiveSlideId].content.button">-->
+
+        <!--    </ng-container>-->
+
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+

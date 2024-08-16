@@ -1,0 +1,45 @@
+.slider-content-width {
+  width: 20rem;
+}
+
+.icon-tab {
+  width: 12rem;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.icon {
+  background-color: #168AFF;
+  padding: 0.4rem;
+  border-radius: 3rem;
+}
+
+.icon-description {
+  color: #737373;
+  font-family: "Helvetica Roman", sans-serif;
+}
+
+.title {
+  font-family: 'Helvetica Medium', sans-serif;
+  font-size: 3.4rem;
+  color: #212529;
+}
+
+.icon-active {
+  background-color: #168AFF;
+}
+
+.icon-inactive {
+  background-color: #ececec;
+}
+
+.icon-tab-active {
+  border-right: 0.2rem solid #168AFF;
+}
+
+.icon-tab-inactive {
+  border-right: 0.2rem solid #ececec;
+}
