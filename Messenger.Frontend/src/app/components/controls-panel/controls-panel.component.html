@@ -1,0 +1,90 @@
+<div class="d-flex flex-column h-100 ps-4 pe-4"
+     [ngClass]="areControlsExtended ? 'align-items-start' : 'align-items-center'">
+  <div class="d-flex flex-column justify-content-center" [ngClass]="[
+                                                                      areControlsExtended ? 'align-items-start' : 'align-items-center',
+                                                                      areControlsExtended ? 'w-100' : 'w-auto']">
+    <a class="control-item custom-controls-item-padding d-flex w-100"
+       [ngClass]="sectionType === AppSectionsTypes.chats ? 'control-item-active' : 'control-item'"
+       (click)="changeSection(AppSectionsTypes.chats)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.50977 19.8018C8.83126 20.5639 10.3645 21 11.9996 21C16.9702 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 13.6351
+        3.43604 15.1684 4.19819 16.4899L4.20114 16.495C4.27448 16.6221 4.31146 16.6863 4.32821 16.7469C4.34401 16.804 4.34842 16.8554 4.34437 16.9146C4.34003 16.9781
+         4.3186 17.044 4.27468 17.1758L3.50586 19.4823L3.50489 19.4853C3.34268 19.9719 3.26157 20.2152 3.31938 20.3774C3.36979 20.5187 3.48169 20.6303 3.62305
+         20.6807C3.78482 20.7384 4.02705 20.6577 4.51155 20.4962L4.51758 20.4939L6.82405 19.7251C6.95537 19.6813 7.02214 19.6591 7.08559 19.6548C7.14475 19.6507 7.19578
+          19.6561 7.25293 19.6719C7.31368 19.6887 7.37783 19.7257 7.50563 19.7994L7.50977 19.8018Z"
+              stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p *ngIf="areControlsExtended" class="m-0 ps-2 color-black">Chats</p>
+    </a>
+    <a class="control-item custom-controls-item-padding d-flex w-100"
+       [ngClass]="sectionType === AppSectionsTypes.groups ? 'control-item-active' : 'control-item'"
+       (click)="changeSection(AppSectionsTypes.groups)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 19.9999C21 18.2583 19.3304 16.7767 17 16.2275M15 20C15 17.7909 12.3137 16 9 16C5.68629 16 3 17.7909 3 20M15 13C17.2091 13 19 11.2091 19 9C19
+        6.79086 17.2091 5 15 5M9 13C6.79086 13 5 11.2091 5 9C5 6.79086 6.79086 5 9 5C11.2091 5 13 6.79086 13 9C13 11.2091 11.2091 13 9 13Z"
+              stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p *ngIf="areControlsExtended" class="m-0 ps-2 color-black">People</p>
+    </a>
+    <a class="control-item custom-controls-item-padding d-flex w-100"
+       [ngClass]="sectionType === AppSectionsTypes.marketplace ? 'control-item-active' : 'control-item'"
+       (click)="changeSection(AppSectionsTypes.marketplace)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 8C9 9.65685 10.3431 11 12 11C13.6569 11 15 9.65685 15 8M3 16.8002V7.2002C3 6.08009 3 5.51962 3.21799 5.0918C3.40973 4.71547 3.71547 4.40973
+        4.0918 4.21799C4.51962 4 5.08009 4 6.2002 4H17.8002C18.9203 4 19.4796 4 19.9074 4.21799C20.2837 4.40973 20.5905 4.71547 20.7822 5.0918C21 5.5192 21 6.07899
+         21 7.19691V16.8036C21 17.9215 21 18.4805 20.7822 18.9079C20.5905 19.2842 20.2837 19.5905 19.9074 19.7822C19.48 20 18.921 20 17.8031 20H6.19691C5.07899 20
+         4.5192 20 4.0918 19.7822C3.71547 19.5905 3.40973 19.2842 3.21799 18.9079C3 18.4801 3 17.9203 3 16.8002Z"
+              stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p *ngIf="areControlsExtended" class="m-0 ps-2 color-black">Marketplace</p>
+    </a>
+    <a class="control-item custom-controls-item-padding d-flex w-100"
+       [ngClass]="sectionType === AppSectionsTypes.requests ? 'control-item-active' : 'control-item'"
+       (click)="changeSection(AppSectionsTypes.requests)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.50977 19.8018C8.83126 20.5639 10.3645 21 11.9996 21C16.9702 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 13.6351
+         3.43604 15.1684 4.19819 16.4899L4.20114 16.495C4.27448 16.6221 4.31146 16.6863 4.32821 16.7469C4.34401 16.804 4.34842 16.8554 4.34437 16.9146C4.34003
+         16.9781 4.3186 17.044 4.27468 17.1758L3.50586 19.4823L3.50489 19.4853C3.34268 19.9719 3.26157 20.2152 3.31938 20.3774C3.36979 20.5187 3.48169 20.6303
+         3.62305 20.6807C3.78482 20.7384 4.02705 20.6577 4.51155 20.4962L4.51758 20.4939L6.82405 19.7251C6.95537 19.6813 7.02214 19.6591 7.08559 19.6548C7.14475
+         19.6507 7.19578 19.6561 7.25293 19.6719C7.31368 19.6887 7.37783 19.7257 7.50563 19.7994L7.50977 19.8018Z"
+              stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p *ngIf="areControlsExtended" class="m-0 ps-2 color-black">Request</p>
+    </a>
+    <a class="control-item custom-controls-item-padding d-flex w-100"
+       [ngClass]="sectionType === AppSectionsTypes.archives ? 'control-item-active' : 'control-item'"
+       (click)="changeSection(AppSectionsTypes.archives)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.60035 9H17.4003M6.60035 9C6.04029 9 5.75957 9 5.54566 9.10899C5.3575 9.20487 5.20463 9.35774 5.10875 9.5459C4.99976 9.75981
+        4.99976 10.04 4.99976 10.6001V15.8001C4.99976 16.9202 4.99976 17.4804 5.21775 17.9082C5.40949 18.2845 5.71523 18.5905 6.09156 18.7822C6.51896
+        19 7.07875 19 8.19667 19H15.8025C16.9204 19 17.4794 19 17.9068 18.7822C18.2831 18.5905 18.5902 18.2844 18.782 17.9081C18.9998 17.4807 18.9998
+        16.9216 18.9998 15.8037V10.591C18.9998 10.037 18.9998 9.75865 18.8914 9.5459C18.7955 9.35774 18.6419 9.20487 18.4538 9.10899C18.2398 9 17.9604
+        9 17.4003 9M6.60035 9H4.97507C4.12597 9 3.70168 9 3.4607 8.85156C3.13911 8.65347 2.95678 8.29079 2.98902 7.91447C3.0132 7.63223 3.26593 7.29089 3.77222
+        6.60739C3.91866 6.40971 3.99189 6.31084 4.08152 6.23535C4.20104 6.1347 4.34286 6.06322 4.49488 6.02709C4.60889 6 4.73126 6 4.9773 6H19.0217C19.2677 6 19.3904
+        6 19.5044 6.02709C19.6564 6.06322 19.7982 6.1347 19.9177 6.23535C20.0074 6.31084 20.0809 6.40924 20.2273 6.60693C20.7336 7.29042 20.9867 7.63218 21.0109
+        7.91442C21.0432 8.29074 20.8602 8.65347 20.5386 8.85156C20.2976 9 19.8723 9 19.0232 9H17.4003M9.99976 14H13.9998"
+              stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p *ngIf="areControlsExtended" class="m-0 ps-2 color-black">Archive</p>
+    </a>
+  </div>
+  <div *ngIf="!areControlsExtended" class="splitter"></div>
+  <p *ngIf="areControlsExtended" class="m-0 color-black pt-3">Community</p>
+  <div class="d-flex flex-column justify-content-end h-100 w-100" [ngClass]="areControlsExtended ? ' align-items-start' : ' align-items-center'">
+    <a class="d-flex">
+      <img ngSrc="/images/profile-picture.jpg" alt="" class="profile-picture mb-2" [ngClass]="areControlsExtended ? 'ms-custom' : 'ms-0'" height="26" width="26">
+      <ng-container *ngIf="areControlsExtended">
+        <p class="m-0 ms-3 color-black">{{user?.firstName}}</p>
+      </ng-container>
+    </a>
+    <a class="control-item custom-controls-item-padding" (click)="resizeControls()" [ngClass]="areControlsExtended ? 'ms-1' : 'ms-0'">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 4H7.2002C6.08009 4 5.51962 4 5.0918 4.21799C4.71547 4.40973 4.40973 4.71547 4.21799 5.0918C4 5.51962 4 6.08009 4 7.2002V16.8002C4 17.9203
+        4 18.4801 4.21799 18.9079C4.40973 19.2842 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H8M8 4H16.8002C17.9203 4 18.4796 4 18.9074 4.21799C19.2837
+        4.40973 19.5905 4.71547 19.7822 5.0918C20 5.5192 20 6.07899 20 7.19691V16.8036C20 17.9215 20 18.4805 19.7822 18.9079C19.5905 19.2842 19.2837 19.5905 18.9074
+         19.7822C18.48 20 17.921 20 16.8031 20H8M8 4V20M12 11H16M12 8H16"
+              stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</div>

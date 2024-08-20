@@ -1,0 +1,37 @@
+a {
+  text-decoration: none;
+}
+
+.splitter {
+  width: 22px;
+  height: 0.01rem;
+  background-color: black;
+  margin: 1.6rem 0.7rem;
+}
+
+.control-item {
+  background-color: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.control-item:hover {
+  background-color: #e7e7e7;
+  border-radius: 0.5rem;
+}
+
+.control-item-active {
+  background-color: #e7e7e7;
+}
+
+.custom-controls-item-padding {
+  padding: 0.7rem;
+}
+
+.profile-picture {
+  border-radius: 3rem;
+}
+
+.ms-custom {
+  margin-left: 0.9rem;
+}
