@@ -25,7 +25,7 @@ export class FeaturesPageComponent implements OnInit {
       {
         id: 0,
         iconData: {
-          iconPath: '/icons/message-icon.svg',
+          iconPath: '/icons/outline/message-icon.svg',
           iconDescription: 'LOVE',
         },
         imagePath: '/images/features-page/express-yourself-1.png',
@@ -38,7 +38,7 @@ export class FeaturesPageComponent implements OnInit {
       {
         id: 1,
         iconData: {
-          iconPath: '/icons/message-icon.svg',
+          iconPath: '/icons/outline/message-icon.svg',
           iconDescription: 'TIE DYE',
         },
         imagePath: '/images/features-page/express-yourself-2.png',
@@ -51,7 +51,7 @@ export class FeaturesPageComponent implements OnInit {
       {
         id: 2,
         iconData: {
-          iconPath: '/icons/message-icon.svg',
+          iconPath: '/icons/outline/message-icon.svg',
           iconDescription: 'PRIDE',
         },
         imagePath: '/images/features-page/express-yourself-3.png',

@@ -8,9 +8,6 @@ namespace Messenger.App.Models.DB_Models
         public int u_id { get; set; }
 
 		[Required]
-        public string u_name { get; set; } = string.Empty;
-
-		[Required]
 		[EmailAddress]
 		public string u_email { get; set; } = string.Empty;
 
@@ -19,5 +16,8 @@ namespace Messenger.App.Models.DB_Models
 
 		[Required]
 		public int u_mobile_phone { get; set; }
-    }
+
+		public string u_firstname { get; set; } = string.Empty;
+        public string u_lastname { get; set; } = string.Empty;
+	}
 }

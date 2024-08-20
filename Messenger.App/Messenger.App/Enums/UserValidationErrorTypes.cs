@@ -2,10 +2,8 @@
 {
 	public enum UserValidationErrorTypes
 	{
-		EmailAlreadyExists = 1,
-		UsernameAlreadyExists = 2,
+		UserAlreadyExists = 1,
 		InvalidEmail = 3,
-		InvalidUsername = 4,
 		InvalidPassword = 5,
 		UserNotFound = 6
 	}
