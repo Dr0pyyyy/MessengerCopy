@@ -16,7 +16,7 @@ namespace Messenger.App.Helpers
 		public string GenerateJwtToken(UserModel user)
 		{
 			var tokenHandler = new JwtSecurityTokenHandler();
-			var key = Encoding.ASCII.GetBytes("your-very-strong-secret-key-32chars");
+			var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET_KEY"));
 			var tokenDecriptor = new SecurityTokenDescriptor
 			{
 				Subject = new ClaimsIdentity(new Claim[]

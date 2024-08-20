@@ -1,3 +1,4 @@
+using dotenv.net;
 using Messenger.App;
 using Messenger.App.Factories;
 using Messenger.App.Helpers;
@@ -12,19 +13,8 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
-//CORS
-builder.Services.AddCors(options =>
-{
-	options.AddPolicy(name: MyAllowSpecificOrigins,
-					  policy =>
-					  {
-						  policy.WithOrigins("http://localhost:4200")
-								.AllowAnyHeader()
-								.AllowAnyMethod();
-					  });
-});
-
 //JWT
+DotEnv.Load();
 var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET_KEY"));
 builder.Services.AddAuthentication(x =>
 {
@@ -43,6 +33,18 @@ builder.Services.AddAuthentication(x =>
 		  ValidateAudience = false
 	  };
   });
+
+//CORS
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy(name: MyAllowSpecificOrigins,
+					  policy =>
+					  {
+						  policy.WithOrigins("http://localhost:4200")
+								.AllowAnyHeader()
+								.AllowAnyMethod();
+					  });
+});
 
 //Automapper
 builder.Services.AddAutoMapper(typeof(UserMappingProfiles));
