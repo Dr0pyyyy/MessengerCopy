@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {BaseNavbarComponent} from "../../../components/core/base-navbar/base-navbar.component";
 import {BaseFooterComponent} from "../../../components/core/base-footer/base-footer.component";
+import {FormsModule} from "@angular/forms";
+import {AuthService} from "../../../services/auth.services";
+import {LoginRequest} from "../../../models/login-request";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
@@ -9,11 +13,39 @@ import {BaseFooterComponent} from "../../../components/core/base-footer/base-foo
   imports: [
     NgOptimizedImage,
     BaseNavbarComponent,
-    BaseFooterComponent
+    BaseFooterComponent,
+    FormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+
+  public loginRequest: LoginRequest = new LoginRequest();
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+    this.loginRequest.email = "test@email.com";
+    this.loginRequest.password = "12345";
+  }
+
+  login() {
+    this.authService.login(this.loginRequest).subscribe({
+      next: (response) => {
+        const userId = response.userId;
+        this.router.navigate([`base/${userId}`], { relativeTo: this.route }).then(() => {
+          localStorage.setItem("jwtToken", response.jwtToken);
+        });
+      },
+      error: (error) => {
+        console.log("Login failed");
+      }
+    });
+  }
 
 }

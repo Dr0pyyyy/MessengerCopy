@@ -21,15 +21,15 @@
           <div class="mb-custom">
             <div class="input-group mb-3 w-75">
               <input type="text" class="form-control" placeholder="Email or phone number" aria-label="Small"
-                     aria-describedby="inputGroup-sizing-sm">
+                     aria-describedby="inputGroup-sizing-sm" [(ngModel)]="loginRequest.email">
             </div>
             <div class="input-group w-75">
               <input type="text" class="form-control" placeholder="Password" aria-label="Small"
-                     aria-describedby="inputGroup-sizing-sm">
+                     aria-describedby="inputGroup-sizing-sm" [(ngModel)]="loginRequest.password">
             </div>
           </div>
           <div class="d-flex align-items-center mb-4">
-            <button class="btn btn-primary">Log in</button>
+            <button class="btn btn-primary" (click)="login()">Log in</button>
             <a class="ms-4" href="#">Forgotten your password?</a>
           </div>
           <div class="form-check mb-4">
