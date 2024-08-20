@@ -8,8 +8,8 @@ namespace Messenger.App.Services
 	public interface IAuthService
 	{
 		UserModel CreateNewUser(User newUser);
-		UserModel GetByEmailOrPhone(NewUserModel newUser);
-		void UserExists(NewUserModel userModel, List<UserValidationErrorTypes> validationErrors);
+		UserModel GetByEmailOrPhone(LoginRequest newUser);
+		bool UserExists(LoginRequest userModel);
 	}
 
 	public class AuthService : IAuthService
@@ -33,18 +33,14 @@ namespace Messenger.App.Services
 			return _mapper.Map<User, UserModel>(newUser);
 		}
 
-		public void UserExists(NewUserModel userModel, List<UserValidationErrorTypes> validationErrors)
+		public bool UserExists(LoginRequest userModel)
 		{
-			if (_dbContext.Users.Any(u => u.u_email == userModel.Email))
-				validationErrors.Add(UserValidationErrorTypes.EmailAlreadyExists);
-
-			if (_dbContext.Users.Any(u => u.u_name == userModel.Username))
-				validationErrors.Add(UserValidationErrorTypes.UsernameAlreadyExists);
+			return _dbContext.Users.Any(u => u.u_email == userModel.Email);
 		}
 
-		public UserModel GetByEmailOrPhone(NewUserModel newUser)
-		{ 
-			var user = _dbContext.Users.FirstOrDefault(u => u.u_email == newUser.Email || u.u_mobile_phone == newUser.MobilePhone);
+		public UserModel GetByEmailOrPhone(LoginRequest newUser)
+		{
+			var user = _dbContext.Users.FirstOrDefault(u => u.u_email == newUser.Email);
 			if (user == null)
 				return new UserModel { ValidationsErrors = new List<UserValidationErrorTypes> { UserValidationErrorTypes.UserNotFound } };
 			return _mapper.Map<User, UserModel>(user);

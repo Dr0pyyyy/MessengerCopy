@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Messenger.App.Controllers
 {
+	[Route("auth")]
 	public class AuthController : Controller
 	{
 		private readonly IAuthFactory _authFactory;
@@ -14,19 +15,19 @@ namespace Messenger.App.Controllers
 		}
 
 		[HttpPost("")]
-		public IActionResult CreateNewUser([FromBody] NewUserModel newUser)
+		public IActionResult CreateNewUser([FromBody] LoginRequest newUser)
 		{
 			var userUiModel = _authFactory.CreateNewUser(newUser);
-			if(userUiModel.ValidationsErrors.Count > 0)
+			if(userUiModel.ValidationsErrors != null && userUiModel.ValidationsErrors.Count > 0)
 				return BadRequest(userUiModel.ValidationsErrors);
 			return Ok(userUiModel.UserId);
 		}
 
 		[HttpPost("login")]
-		public IActionResult Login([FromBody] NewUserModel newUser)
+		public IActionResult Login([FromBody] LoginRequest loginRequest)
 		{
-			_authFactory.Login(newUser);
-			return Ok();
+			var user = _authFactory.Login(loginRequest);
+			return Ok(user);
 		}
 	}
 }

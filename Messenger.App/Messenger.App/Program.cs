@@ -1,27 +1,62 @@
 using Messenger.App;
 using Messenger.App.Factories;
+using Messenger.App.Helpers;
+using Messenger.App.MappingProfiles;
 using Messenger.App.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
+//CORS
 builder.Services.AddCors(options =>
 {
 	options.AddPolicy(name: MyAllowSpecificOrigins,
-		policy =>
-		{
-			policy.WithOrigins("http://localhost:4200/");
-		});
+					  policy =>
+					  {
+						  policy.WithOrigins("http://localhost:4200")
+								.AllowAnyHeader()
+								.AllowAnyMethod();
+					  });
 });
+
+//JWT
+var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET_KEY"));
+builder.Services.AddAuthentication(x =>
+{
+	x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+	x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+  .AddJwtBearer(x =>
+  {
+	  x.RequireHttpsMetadata = false;
+	  x.SaveToken = true;
+	  x.TokenValidationParameters = new TokenValidationParameters
+	  {
+		  ValidateIssuerSigningKey = true,
+		  IssuerSigningKey = new SymmetricSecurityKey(key),
+		  ValidateIssuer = false,
+		  ValidateAudience = false
+	  };
+  });
+
+//Automapper
+builder.Services.AddAutoMapper(typeof(UserMappingProfiles));
 
 builder.Services.AddDbContext<MainDbContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
-builder.Services.AddTransient<IAuthFactory, AuthFactory>();
-builder.Services.AddTransient<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthFactory, AuthFactory>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddScoped<IJwtHandler, JwtHandler>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
