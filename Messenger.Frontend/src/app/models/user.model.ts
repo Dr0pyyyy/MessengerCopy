@@ -1,9 +1,12 @@
 export class UserModel {
   userId: number;
   email: string;
-  mobilePhone: number | null;
+  phone: number | null;
   firstName: string;
   lastName: string;
   jwtToken: string;
   password: string;
+  created: Date;
+  updated: Date;
+  deleted: Date;
 }

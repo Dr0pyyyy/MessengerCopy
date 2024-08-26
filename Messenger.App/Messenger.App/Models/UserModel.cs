@@ -7,9 +7,12 @@ namespace Messenger.App.Models
 	{
         public int UserId { get; set; }
 		public string Email { get; set; } = string.Empty;
-		public int MobilePhone { get; set; }
+		public int Phone { get; set; }
         public string FirstName { get; set; } = string.Empty;
 		public string LastName { get; set; } = string.Empty;
+        public DateTime Created { get; set; } = DateTime.Now;
+		public DateTime Updated { get; set; }
+		public DateTime Deleted { get; set; }
 		public string JwtToken { get; set; } = string.Empty;
 
 		[JsonIgnore]

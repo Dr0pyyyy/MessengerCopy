@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Messenger.App.Services;
+﻿using Messenger.App.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -37,7 +37,8 @@ namespace Messenger.App.Factories
 
 			var user = new User
 			{
-				u_email = newUser.Email
+				u_email = newUser.Email,
+				u_created = DateTime.UtcNow
 			};
 
 			var passwordHash = BCrypt.Net.BCrypt.HashPassword(newUser.Password);
@@ -82,8 +83,8 @@ namespace Messenger.App.Factories
 				validationErrors.Add(UserValidationErrorTypes.InvalidEmail);
 
 			var userExists = _authService.UserExists(newUser);
-			if(!userExists)
-				validationErrors.Add(UserValidationErrorTypes.UserNotFound);
+			if(userExists)
+				validationErrors.Add(UserValidationErrorTypes.UserAlreadyExists);
 			return validationErrors;
 		}
 	}
