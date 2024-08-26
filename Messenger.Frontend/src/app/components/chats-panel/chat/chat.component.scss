@@ -1,0 +1,27 @@
+.chat {
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 0.6rem;
+
+  .profile-picture {
+    border-radius: 3rem;
+    background-color: #bbbbbb;
+    padding: 0.5rem;
+  }
+
+  .name {
+    font-size: 1rem;
+    color: #212529;
+    font-family: "Helvetica Medium", sans-serif;
+  }
+
+  .last-activity{
+    font-size: 0.9rem;
+    color: #bbbbbb;
+    font-family: "Helvetica Light", sans-serif;
+  }
+}
+
+.chat:hover {
+  background-color: #ececec;
+}
