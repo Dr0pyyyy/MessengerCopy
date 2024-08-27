@@ -20,7 +20,7 @@ namespace Messenger.App.Controllers
 			var userUiModel = _authFactory.CreateNewUser(newUser);
 			if(userUiModel.ValidationsErrors != null && userUiModel.ValidationsErrors.Count > 0)
 				return BadRequest(userUiModel.ValidationsErrors);
-			return Ok(userUiModel.UserId);
+			return Ok();
 		}
 
 		[HttpPost("login")]

@@ -1,54 +1,69 @@
-<div class="container">
-  <div class="row">
-    <app-base-navbar class="p-0"></app-base-navbar>
-  </div>
-  <div class="row">
-    <div class="row pt-5">
-      <!-- Left panel -->
-      <div class="col-12 col-lg-6 p-0">
-        <div class="width-28-rem">
-          <!-- Title -->
-          <div class="mb-custom">
-            <h1 class="gradient-text login-title mb-0">Hang out</h1>
-            <h1 class="gradient-text login-title mb-0">anytime,</h1>
-            <h1 class="gradient-text login-title mb-0">anywhere</h1>
-          </div>
-
-          <!-- Description -->
-          <p class="mb-custom">Messenger makes it easy and fun to stay close to your favourite people.</p>
-
-          <!-- Login form -->
-          <div class="mb-custom">
-            <div class="input-group mb-3 w-75">
-              <input type="text" class="form-control" placeholder="Email or phone number" aria-label="Small"
-                     aria-describedby="inputGroup-sizing-sm" [(ngModel)]="loginRequest.email">
+<!-- Add #loginForm="ngForm" to track form validity -->
+<form #loginForm="ngForm" (ngSubmit)="login()">
+  <div class="container">
+    <div class="row">
+      <app-base-navbar class="p-0"></app-base-navbar>
+    </div>
+    <div class="row">
+      <div class="row pt-5">
+        <!-- Left panel -->
+        <div class="col-12 col-lg-6 p-0">
+          <div class="width-28-rem">
+            <!-- Title -->
+            <div class="mb-custom">
+              <h1 class="gradient-text login-title mb-0">Hang out</h1>
+              <h1 class="gradient-text login-title mb-0">anytime,</h1>
+              <h1 class="gradient-text login-title mb-0">anywhere</h1>
             </div>
-            <div class="input-group w-75">
-              <input type="text" class="form-control" placeholder="Password" aria-label="Small"
-                     aria-describedby="inputGroup-sizing-sm" [(ngModel)]="loginRequest.password">
+
+            <!-- Description -->
+            <p class="mb-custom">Messenger makes it easy and fun to stay close to your favourite people.</p>
+
+            <!-- Login form -->
+            <div class="mb-custom">
+              <!-- Email or phone number -->
+              <div class="input-group mb-3 w-75 flex-column">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                  <div *ngIf="email.errors?.['required']">Email or phone number is required</div>
+                </div>
+                <input type="text" class="form-control w-100" placeholder="Email or phone number" id="email" name="email" required
+                       [(ngModel)]="loginRequest.email" #email="ngModel">
+              </div>
+
+              <!-- Password -->
+              <div class="input-group w-75 flex-column">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+                  <div *ngIf="password.errors?.['required']">Password is required</div>
+                </div>
+                <input type="password" class="form-control w-100" placeholder="Password" id="password" name="password" required
+                       [(ngModel)]="loginRequest.password" #password="ngModel">
+              </div>
             </div>
+
+            <div class="d-flex align-items-center mb-4">
+              <!-- Bind the disabled attribute to the form's validity -->
+              <button class="btn btn-primary" [disabled]="loginForm.invalid">Log in</button>
+              <a class="ms-4" href="#">Forgotten your password?</a>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label ms-1" for="flexCheckDefault">
+                Keep me signed in
+              </label>
+            </div>
+
+            <!-- Other sign up options -->
+            <a href="#"><img ngSrc="/icons/app-store-download-badge.svg" alt="Appstore download badge" height="45" width="130"></a>
+            <a href="#"><img ngSrc="/icons/microsoft-download-badge.svg" class="ms-3" alt="Microsoft download badge" height="45" width="121"></a>
           </div>
-          <div class="d-flex align-items-center mb-4">
-            <button class="btn btn-primary" (click)="login()">Log in</button>
-            <a class="ms-4" href="#">Forgotten your password?</a>
-          </div>
-          <div class="form-check mb-4">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label ms-1" for="flexCheckDefault">
-              Keep me signed in
-            </label>
-          </div>
-          <a href="#"><img ngSrc="/icons/app-store-download-badge.svg" alt="Appstore download badge" height="45"
-                           width="130"></a>
-          <a href="#"><img ngSrc="/icons/microsoft-download-badge.svg" class="ms-3" alt="Microsoft download badge"
-                           height="45" width="121"></a>
         </div>
-      </div>
-      <!-- Right panel -->
-      <div class="col-12 col-lg-6 p-0 d-flex align-items-center position-relative">
-        <img ngSrc="/images/messenger-splash-image.png" class="mt-3 object-fit-contain" alt="Messenger splash image"
-             fill="" priority="'true'">
+
+        <!-- Right panel -->
+        <div class="col-12 col-lg-6 p-0 d-flex align-items-center position-relative">
+          <img ngSrc="/images/messenger-splash-image.png" class="mt-3 object-fit-contain" alt="Messenger splash image" fill="" priority="'true'">
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>

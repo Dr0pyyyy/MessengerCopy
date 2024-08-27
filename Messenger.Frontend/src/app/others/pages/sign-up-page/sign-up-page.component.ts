@@ -34,12 +34,6 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     document.body.style.backgroundColor = 'white';
-
-    this.signUpRequest.firstname = "firstname";
-    this.signUpRequest.lastname = "lastname";
-    this.signUpRequest.email = "email@test.com";
-    this.signUpRequest.phone = 123123123;
-    this.signUpRequest.password = "password";
   }
 
   ngOnDestroy() {
@@ -48,15 +42,16 @@ export class SignUpPageComponent implements OnInit, OnDestroy {
 
   signUp() {
     this.authService.register(this.signUpRequest).subscribe({
-      next: (response) => {
-        this.router.navigate([`/login`])
-          .then(() => {
-            localStorage.setItem("jwtToken", response.jwtToken);
-          });
+      next: () => {
+        this.router.navigate([`/login`]).then()
       },
       error: (error) => {
         console.log("SignUp failed", error);
       }
     })
+  }
+
+  routeToLogin() {
+    this.router.navigate([`/login`]).then();
   }
 }

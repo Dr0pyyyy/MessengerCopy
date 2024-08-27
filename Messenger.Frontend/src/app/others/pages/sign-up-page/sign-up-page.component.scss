@@ -36,6 +36,16 @@ label {
   padding-bottom: 0.1rem;
 }
 
+.login-link{
+  color: #168AFF;
+  text-decoration: underline;
+}
+
+span {
+  color: #737373;
+  font-size: 0.9rem;
+}
+
 //Styles for number input
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

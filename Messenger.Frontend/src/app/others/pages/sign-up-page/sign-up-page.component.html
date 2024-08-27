@@ -21,6 +21,7 @@
 
             <!-- Login form -->
             <div class="mb-custom">
+
               <!-- Firstname -->
               <div class="input-group mb-3 w-75 flex-column">
                 <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="error-message">
@@ -68,8 +69,8 @@
             </div>
 
             <div class="d-flex align-items-center mb-4">
-              <!-- Bind the disabled attribute to the form's validity -->
               <button class="btn btn-primary" [disabled]="signUpForm.invalid">Sign up</button>
+              <span class="ms-4">Already have an account? <a class="login-link" (click)="routeToLogin()">Login</a></span>
             </div>
 
             <!-- Other sign up options -->
