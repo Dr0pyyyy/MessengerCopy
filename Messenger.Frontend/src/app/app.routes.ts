@@ -3,11 +3,12 @@ import {LoginComponent} from "./others/pages/login-page/login.component";
 import {FeaturesPageComponent} from "./others/pages/features-page/features-page.component";
 import {DesktopAppPageComponent} from "./others/pages/desktop-app-page/desktop-app-page.component";
 import {BaseComponent} from "./components/home/base.component";
+import {SignUpPageComponent} from "./others/pages/sign-up-page/sign-up-page.component";
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: SignUpPageComponent },
 
-  { path: 'login-page', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'features', component: FeaturesPageComponent },
   { path: 'desktop-app', component: DesktopAppPageComponent },
 

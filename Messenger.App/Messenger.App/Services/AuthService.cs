@@ -8,8 +8,8 @@ namespace Messenger.App.Services
 	public interface IAuthService
 	{
 		UserModel CreateNewUser(User newUser);
-		UserModel GetByEmailOrPhone(LoginRequest newUser);
-		bool UserExists(LoginRequest userModel);
+		UserModel GetByEmailOrPhone(AuthRequest newUser);
+		bool UserExists(AuthRequest userModel);
 	}
 
 	public class AuthService : IAuthService
@@ -33,12 +33,12 @@ namespace Messenger.App.Services
 			return _mapper.Map<User, UserModel>(newUser);
 		}
 
-		public bool UserExists(LoginRequest userModel)
+		public bool UserExists(AuthRequest userModel)
 		{
 			return _dbContext.Users.Any(u => u.u_email == userModel.Email);
 		}
 
-		public UserModel GetByEmailOrPhone(LoginRequest newUser)
+		public UserModel GetByEmailOrPhone(AuthRequest newUser)
 		{
 			var user = _dbContext.Users.FirstOrDefault(u => u.u_email == newUser.Email);
 			if (user == null)

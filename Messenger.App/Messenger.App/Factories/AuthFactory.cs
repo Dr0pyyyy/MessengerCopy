@@ -8,8 +8,8 @@ namespace Messenger.App.Factories
 {
 	public interface IAuthFactory
 	{
-		UserModel CreateNewUser(LoginRequest newUser);
-		UserModel Login(LoginRequest newUser);
+		UserModel CreateNewUser(AuthRequest newUser);
+		UserModel Login(AuthRequest newUser);
 	}
 
 	public class AuthFactory : IAuthFactory
@@ -29,7 +29,7 @@ namespace Messenger.App.Factories
 			_validationErrors = new List<UserValidationErrorTypes>();
 		}
 
-		public UserModel CreateNewUser(LoginRequest newUser)
+		public UserModel CreateNewUser(AuthRequest newUser)
 		{
 			ValidateNewUser(newUser, _validationErrors);
 			if(_validationErrors.Count > 0)
@@ -38,7 +38,10 @@ namespace Messenger.App.Factories
 			var user = new User
 			{
 				u_email = newUser.Email,
-				u_created = DateTime.UtcNow
+				u_phone = newUser.Phone,
+				u_created = DateTime.UtcNow,
+				u_firstname = newUser.Firstname,
+				u_lastname = newUser.Lastname
 			};
 
 			var passwordHash = BCrypt.Net.BCrypt.HashPassword(newUser.Password);
@@ -46,14 +49,14 @@ namespace Messenger.App.Factories
 			return _authService.CreateNewUser(user);
 		}
 
-		public UserModel Login(LoginRequest newUser)
+		public UserModel Login(AuthRequest newUser)
 		{ 
 			ValidateExistingUser(newUser, _validationErrors);
 			if (_validationErrors.Count > 0)
 				return new UserModel { ValidationsErrors = _validationErrors };
 
 			var user = _authService.GetByEmailOrPhone(newUser);
-			if(user.ValidationsErrors.Count > 0)
+			if(user.ValidationsErrors != null && user.ValidationsErrors.Count > 0)
 				return user;
 
 			var isPasswordValid = BCrypt.Net.BCrypt.Verify(newUser.Password, user.PasswordHash);
@@ -66,7 +69,7 @@ namespace Messenger.App.Factories
 			return user;
 		}
 
-		private List<UserValidationErrorTypes>? ValidateExistingUser(LoginRequest existingUser, List<UserValidationErrorTypes> validationErrors)
+		private List<UserValidationErrorTypes>? ValidateExistingUser(AuthRequest existingUser, List<UserValidationErrorTypes> validationErrors)
 		{
 			if (string.IsNullOrEmpty(existingUser.Email))
 				validationErrors.Add(UserValidationErrorTypes.InvalidEmail);
@@ -77,7 +80,7 @@ namespace Messenger.App.Factories
 			return validationErrors;
 		}
 
-		private List<UserValidationErrorTypes>? ValidateNewUser(LoginRequest newUser, List<UserValidationErrorTypes> validationErrors)
+		private List<UserValidationErrorTypes>? ValidateNewUser(AuthRequest newUser, List<UserValidationErrorTypes> validationErrors)
 		{
 			if (string.IsNullOrEmpty(newUser.Email))
 				validationErrors.Add(UserValidationErrorTypes.InvalidEmail);
