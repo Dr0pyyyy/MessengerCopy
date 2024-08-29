@@ -1,3 +1,5 @@
-<div class="w-100 h-100 bg-white card-border-radius">
-
+<div class="w-100 h-100 bg-white card-border-radius d-flex flex-column">
+  <app-chat-detail-topbar (chatControlsPanelSizeChanged)="toggleControlsPanelSize($event)" class="row p-3 topbar g-0"></app-chat-detail-topbar>
+  <app-chat-detail-thread class="flex-grow-1"></app-chat-detail-thread>
+  <app-chat-detail-composer class="mb-2"></app-chat-detail-composer>
 </div>
