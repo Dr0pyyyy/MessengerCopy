@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {ChatComponent} from "./chat/chat.component";
 import {UserModel} from "../../models/user.model";
@@ -21,7 +21,10 @@ export class ChatsPanelComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() user: UserModel;
 
+  @Output() chatToDisplay: EventEmitter<ChatModel> = new EventEmitter<ChatModel>();
+
   public chats: ChatModel[];
+  public selectedChat: ChatModel;
 
   //Subscriptions
   private chatServiceGetAllSubscription$: Subscription;
@@ -40,19 +43,23 @@ export class ChatsPanelComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    //Load users after user data is retrieved
     if (changes['user'] && this.user) {
-      this.openNewMessageTemplate();
+      this.getAllChats();
     }
   }
 
-  openNewMessageTemplate() {
+  getAllChats() {
     this.chatServiceGetAllSubscription$ = this._chatService.getAll(this.user.userId)
       .subscribe({
         next: (response) => {
           this.chats = response;
+          if(this.chats && this.chats.length > 0)
+            this.selectedChat = this.chats[0];
+            this.chatToDisplay.emit(this.selectedChat);
         },
         error: (error) => {
-
+          console.log("Error while retrieving chats data");
         }
       })
   }

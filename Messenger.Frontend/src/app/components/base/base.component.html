@@ -1,0 +1,23 @@
+<div class="row h-100 w-100 p-3">
+  <div class="p-0 d-flex" [ngClass]="messengerControlsExtended ? 'col-5' : 'col-4'">
+    <div class="row w-100">
+      <div class="p-0" [ngClass]="messengerControlsExtended ? 'col-4' : 'col-2'">
+        <app-controls-panel [user]="user" (controlsExtended)="resizeChatsTabs($event)"></app-controls-panel>
+      </div>
+      <div class="col p-0">
+        <app-chats-panel (chatToDisplay)="setChatToDisplay($event)" [user]="user"></app-chats-panel>
+      </div>
+    </div>
+  </div>
+
+  <div class="col p-0">
+    <app-chat-detail-panel (chatControlsPanelSizeChanged)="toggleChatDetailControlsPanel($event)"
+                           [chat]="chatToDisplay"></app-chat-detail-panel>
+  </div>
+
+  <ng-container *ngIf="chatDetailControlsExtended">
+    <div class="col-3 p-0 ms-custom">
+      <app-chat-detail-controls-panel></app-chat-detail-controls-panel>
+    </div>
+  </ng-container>
+</div>
