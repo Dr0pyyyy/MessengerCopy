@@ -74,7 +74,7 @@
     <a class="d-flex">
       <img ngSrc="/images/profile-picture.jpg" alt="" class="profile-picture mb-2" [ngClass]="areControlsExtended ? 'ms-custom' : 'ms-0'" height="26" width="26">
       <ng-container *ngIf="areControlsExtended">
-        <p class="m-0 ms-3 color-black">{{user?.firstName}}</p>
+        <p class="m-0 ms-3 color-black">{{user.firstName}}</p>
       </ng-container>
     </a>
     <a class="control-item custom-controls-item-padding" (click)="resizeControls()" [ngClass]="areControlsExtended ? 'ms-1' : 'ms-0'">

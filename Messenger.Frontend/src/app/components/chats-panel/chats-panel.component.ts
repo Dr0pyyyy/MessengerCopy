@@ -5,6 +5,7 @@ import {UserModel} from "../../models/user.model";
 import {ChatService} from "../../services/chat.service";
 import {Subscription} from "rxjs";
 import {ChatModel} from "../../models/chat-model";
+import {ChatPickerComponent} from "../core/pickers/chat-picker/chat-picker.component";
 
 @Component({
   selector: 'app-chats-panel',
@@ -12,7 +13,8 @@ import {ChatModel} from "../../models/chat-model";
   imports: [
     NgOptimizedImage,
     ChatComponent,
-    NgForOf
+    NgForOf,
+    ChatPickerComponent
   ],
   templateUrl: './chats-panel.component.html',
   styleUrl: './chats-panel.component.scss'
@@ -43,7 +45,6 @@ export class ChatsPanelComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    //Load users after user data is retrieved
     if (changes['user'] && this.user) {
       this.getAllChats();
     }
@@ -63,6 +64,5 @@ export class ChatsPanelComponent implements OnInit, OnDestroy, OnChanges {
         }
       })
   }
-
 
 }

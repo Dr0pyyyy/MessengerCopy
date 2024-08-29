@@ -31,9 +31,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     document.body.style.backgroundColor = 'white';
-
-    this.loginRequest.email = "johndoe@example.com";
-    this.loginRequest.password = "password";
   }
 
   login() {

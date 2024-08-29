@@ -1,22 +1,23 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { UserModel } from '../../models/user.model';
+import { ChatModel } from '../../models/chat-model';
+import { ApplicationDataService } from '../../services/application-data.service';
+import {NgClass, NgIf} from "@angular/common";
 import {ControlsPanelComponent} from "../controls-panel/controls-panel.component";
 import {ChatsPanelComponent} from "../chats-panel/chats-panel.component";
 import {ChatDetailPanelComponent} from "../chat-detail-panel/chat-detail-panel.component";
-import {NgClass, NgIf} from "@angular/common";
-import {ActivatedRoute} from "@angular/router";
-import {UserService} from "../../services/user.service";
-import {UserModel} from "../../models/user.model";
-import {ChatModel} from "../../models/chat-model";
 import {ChatDetailControlsPanelComponent} from "../chat-detail-controls-panel/chat-detail-controls-panel.component";
 
 @Component({
   selector: 'app-base',
   standalone: true,
   imports: [
+    NgClass,
     ControlsPanelComponent,
     ChatsPanelComponent,
     ChatDetailPanelComponent,
-    NgClass,
     NgIf,
     ChatDetailControlsPanelComponent
   ],
@@ -26,7 +27,7 @@ import {ChatDetailControlsPanelComponent} from "../chat-detail-controls-panel/ch
 export class BaseComponent implements OnInit {
 
   public messengerControlsExtended: boolean = false;
-  public chatDetailControlsExtended: boolean = true;
+  public chatDetailControlsExtended: boolean = false;
 
   public user: UserModel;
   public chatToDisplay: ChatModel;
@@ -34,6 +35,7 @@ export class BaseComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _userService: UserService,
+    private _applicationDataService: ApplicationDataService,
   ) {
   }
 
@@ -43,9 +45,10 @@ export class BaseComponent implements OnInit {
       this._userService.getById(userId).subscribe({
         next: (response) => {
           this.user = response;
+          this._applicationDataService.setUser(this.user);
         },
         error: (error) => {
-          console.log("User retrieval failed")
+          console.log("User retrieval failed");
         }
       });
     });
