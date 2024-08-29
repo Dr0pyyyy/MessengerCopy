@@ -1,0 +1,44 @@
+.card-border-radius {
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-picture {
+  border-radius: 3rem;
+  background-color: #bbbbbb;
+  padding: 0.5rem;
+}
+
+.chat-detail-icon {
+  border-radius: 2rem;
+  padding: 0.5rem;
+  background-color: #ececec;
+}
+
+.chat-detail-icon:hover {
+  background-color: #d2d2d2;
+  border-radius: 2rem;
+  padding: 0.5rem;
+}
+
+.name {
+  font-size: 1rem;
+  color: #212529;
+  font-family: "Helvetica Medium", sans-serif;
+}
+
+
+.last-activity {
+  font-size: 0.9rem;
+  color: #bbbbbb;
+  font-family: "Helvetica Light", sans-serif;
+}
+
+.control-icon-label {
+  font-size: 0.9rem;
+  color: #212529;
+}
+
+.custom-width {
+  width: 14rem;
+}
